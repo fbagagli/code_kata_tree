@@ -77,10 +77,23 @@ void inorder_iterative(const struct tree_node *node)
 			current = current->left;
 		} else {
 			current = pop_stack();
-			printf("el: %d\n", current->payload);
+			printf("%d -> ", current->payload);
 			current = current->right;
 		}
 	}
+}
+
+void free_tree(struct tree_node *node)
+{
+	if (!node)
+		return;
+
+	// 1. Destroy the left subtree
+	free_tree(node->left);
+	// 2. Destroy the right subtree
+	free_tree(node->right);
+	// 3. Finally, destroy the parent (Post-Order)
+	free(node);
 }
 
 int main()
@@ -100,8 +113,9 @@ int main()
 	printf("recursive inorder traversal: ");
 	inorder_recursive(root);
 	printf("\n");
-	printf("iterative inorder traversal\n");
+	printf("iterative inorder traversal: ");
 	inorder_iterative(root);
 	printf("\n");
+	free_tree(root);
 	return 0;
 }
