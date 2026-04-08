@@ -19,6 +19,8 @@ struct tree_node *create_node(int payload)
 
 void inorder_recursive(const struct tree_node *node)
 {
+	if (!node)
+		return;
 	if (node->left) {
 		inorder_recursive(node->left);
 	}
@@ -31,7 +33,7 @@ void inorder_recursive(const struct tree_node *node)
 int tree_size(const struct tree_node *node)
 {
 	if (!node)
-		return -1;
+		return 0;
 	int counter = 0;
 	const struct tree_node *current = node;
 	init_stack();
@@ -77,6 +79,8 @@ void inorder_iterative(const struct tree_node *node)
 
 void preorder_recursive(const struct tree_node *node)
 {
+	if (!node)
+		return;
 	printf("%d -> ", node->payload);
 	if (node->left) {
 		preorder_recursive(node->left);
