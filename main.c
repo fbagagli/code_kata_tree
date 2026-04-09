@@ -13,6 +13,8 @@ int main()
 	struct tree_node *n2 = create_node(2);
 	n3->left = n1;
 	n3->right = n2;
+	struct tree_node *n6 = create_node(6);
+	n2->right = n6;
 
 	// tree display
 	printf("recursive inorder traversal: ");
@@ -27,8 +29,11 @@ int main()
 	printf("iterative preorder traversal: ");
 	preorder_iterative(root);
 	printf("\n");
-    printf("tree size: %d\n", tree_size(root));
-    printf("tree max depth: %d\n", tree_max_depth(root));
+	printf("tree size: %d\n", tree_size(root));
+	printf("tree max depth: %d\n", tree_max_depth(root));
+	printf("recursive postorder traversal: ");
+	postorder_recursive(root);
+	printf("\n");
 	free_tree(root);
 	return 0;
 }

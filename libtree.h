@@ -19,6 +19,8 @@ void preorder_recursive(const struct tree_node *node);
 
 void preorder_iterative(const struct tree_node *node);
 
+void postorder_recursive(const struct tree_node *node);
+
 int tree_size(const struct tree_node *node);
 
 int tree_max_depth(const struct tree_node *node);

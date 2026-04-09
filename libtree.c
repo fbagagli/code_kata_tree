@@ -21,13 +21,9 @@ void inorder_recursive(const struct tree_node *node)
 {
 	if (!node)
 		return;
-	if (node->left) {
-		inorder_recursive(node->left);
-	}
+	inorder_recursive(node->left);
 	printf("%d -> ", node->payload);
-	if (node->right) {
-		inorder_recursive(node->right);
-	}
+	inorder_recursive(node->right);
 }
 
 int tree_size(const struct tree_node *node)
@@ -82,12 +78,8 @@ void preorder_recursive(const struct tree_node *node)
 	if (!node)
 		return;
 	printf("%d -> ", node->payload);
-	if (node->left) {
-		preorder_recursive(node->left);
-	}
-	if (node->right) {
-		preorder_recursive(node->right);
-	}
+	preorder_recursive(node->left);
+	preorder_recursive(node->right);
 }
 
 void preorder_iterative(const struct tree_node *node)
@@ -106,6 +98,20 @@ void preorder_iterative(const struct tree_node *node)
 			current = current->right;
 		}
 	}
+}
+
+void postorder_recursive(const struct tree_node *node)
+{
+	if (!node)
+		return;
+	postorder_recursive(node->left);
+	postorder_recursive(node->right);
+	printf("%d -> ", node->payload);
+}
+
+void postorder_iterative(const struct tree_node *node)
+{
+	// tbd
 }
 
 void free_tree(struct tree_node *node)
